@@ -96,6 +96,11 @@ public class Cadastro1 extends javax.swing.JFrame {
         });
 
         btnDAdm.setText("Diretor administrativo");
+        btnDAdm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDAdmActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -133,7 +138,7 @@ public class Cadastro1 extends javax.swing.JFrame {
         
         Funcionarios funcionario = new Funcionarios();
         funcionario. setMatricula(Integer.parseInt(txtMatricula.getText()));
-        funcionario.steNome(txtNome.getText());
+        funcionario.setNome(txtNome.getText());
         
         escola.adicionarFuncionario(funcionario);
         JOptionPane.showMessageDialog(this, "Funcionario cadastrado com sucesso!!!");
@@ -141,6 +146,16 @@ public class Cadastro1 extends javax.swing.JFrame {
         dispose();
         
     }//GEN-LAST:event_btnFuncionarioActionPerformed
+
+    private void btnDAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDAdmActionPerformed
+    DiretorADM diretor = new DiretorADM(
+            Integer.parseInt(txtMatricula.getText()),txtNome.getText()
+    );
+    escola.adicionarFuncionario(diretor);
+    JOptionPane.showMessageDialog(this, "Diretor cadastrado com sucesso!!!");
+    dispose();
+    
+    }//GEN-LAST:event_btnDAdmActionPerformed
 
     /**
      * @param args the command line arguments
