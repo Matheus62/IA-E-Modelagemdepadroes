@@ -1,6 +1,9 @@
 import javax.swing.JOptionPane;
+
 public class Cadastro1 extends javax.swing.JFrame {
+    
     private folhaPagamento escola;
+    
     public Cadastro1() {
         initComponents();
     }

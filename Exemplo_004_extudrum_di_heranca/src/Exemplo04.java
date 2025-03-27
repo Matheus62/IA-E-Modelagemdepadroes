@@ -72,8 +72,18 @@ public Exemplo04()
         jScrollPane1.setViewportView(tblFuncionarios);
 
         btnCadastro1.setText("Cadastrar Funcionario e/ou Diretor Administrativo");
+        btnCadastro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastro1ActionPerformed(evt);
+            }
+        });
 
         btnCadastro2.setText("Cadastrar Professor e/ou Diretor de escola");
+        btnCadastro2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastro2ActionPerformed(evt);
+            }
+        });
 
         btnLista.setText("Listar Funcionarios");
 
@@ -136,6 +146,19 @@ public Exemplo04()
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCadastro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastro1ActionPerformed
+       Cadastro1 janela = new Cadastro1();
+       janela.setEscola(escola);
+       janela.setVisible(true);
+       
+    }//GEN-LAST:event_btnCadastro1ActionPerformed
+
+    private void btnCadastro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastro2ActionPerformed
+       Cadastro2 janela = new Cadastro2();
+       janela.setEscola(escola);
+       janela.setVisible(true);
+    }//GEN-LAST:event_btnCadastro2ActionPerformed
 
     /**
      * @param args the command line arguments

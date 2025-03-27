@@ -185,11 +185,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cadastrar Funcionario e/ou Diretor Administrativo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastro1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnCadastro2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cadastrar Professor e/ou Diretor de escola"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastro2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnLista">
       <Properties>

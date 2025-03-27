@@ -205,11 +205,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Professor"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProfessorActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnDEscola">
       <Properties>
         <Property name="text" type="java.lang.String" value="Diretor de Escola"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDEscolaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

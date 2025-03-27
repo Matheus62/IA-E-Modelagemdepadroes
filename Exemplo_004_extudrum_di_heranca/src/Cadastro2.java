@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -8,6 +11,8 @@
  * @author aluno
  */
 public class Cadastro2 extends javax.swing.JFrame {
+    
+    private folhaPagamento escola;
 
     /**
      * Creates new form Cadastro1
@@ -15,6 +20,12 @@ public class Cadastro2 extends javax.swing.JFrame {
     public Cadastro2() {
         initComponents();
     }
+
+    public void setEscola(folhaPagamento escola) {
+        this.escola = escola;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -130,8 +141,18 @@ public class Cadastro2 extends javax.swing.JFrame {
         );
 
         btnProfessor.setText("Professor");
+        btnProfessor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProfessorActionPerformed(evt);
+            }
+        });
 
         btnDEscola.setText("Diretor de Escola");
+        btnDEscola.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDEscolaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -168,6 +189,28 @@ public class Cadastro2 extends javax.swing.JFrame {
     private void tfQtdAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfQtdAulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfQtdAulaActionPerformed
+
+    private void btnProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfessorActionPerformed
+        Professores professor = new Professores();
+        professor.setMatricula(Integer.parseInt(tfMatricula.getText()));
+        professor.setNome(tfNome.getText());
+        professor.setQtdAulas(Integer.parseInt(tfQtdAula.getText()));
+        professor.setVhAulas(Double.parseDouble(tfVhAula.getText()));
+        
+        escola.adicionarFuncionario(professor);
+        JOptionPane.showMessageDialog(this, "Diretor cadastrado com sucesso!!!");
+    }//GEN-LAST:event_btnProfessorActionPerformed
+
+    private void btnDEscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDEscolaActionPerformed
+        DiretorEscola diretor = new DiretorEscola();
+        diretor.setMatricula(Integer.parseInt(tfMatricula.getText()));
+        diretor.setNome(tfNome.getText());
+        diretor.setQtdAulas(Integer.parseInt(tfQtdAula.getText()));
+        diretor.setVhAulas(Double.parseDouble(tfVhAula.getText()));
+        
+        escola.adicionarFuncionario(diretor);
+        JOptionPane.showMessageDialog(this, "Diretor cadastrado com sucesso!!!");
+    }//GEN-LAST:event_btnDEscolaActionPerformed
 
     /**
      * @param args the command line arguments
