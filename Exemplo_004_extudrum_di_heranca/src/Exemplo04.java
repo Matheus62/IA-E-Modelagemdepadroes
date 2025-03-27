@@ -86,6 +86,11 @@ public Exemplo04()
         });
 
         btnLista.setText("Listar Funcionarios");
+        btnLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaActionPerformed(evt);
+            }
+        });
 
         btnSair.setText("Sair");
 
@@ -159,6 +164,10 @@ public Exemplo04()
        janela.setEscola(escola);
        janela.setVisible(true);
     }//GEN-LAST:event_btnCadastro2ActionPerformed
+
+    private void btnListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnListaActionPerformed
 
     /**
      * @param args the command line arguments
