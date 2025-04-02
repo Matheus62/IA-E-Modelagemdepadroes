@@ -100,34 +100,36 @@ public Exemplo04()
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(161, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(txtAmostra)
+                        .addGap(159, 159, 159))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnCadastro2)
+                        .addGap(207, 207, 207))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(252, 252, 252)
-                                .addComponent(btnLista))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(203, 203, 203)
-                                .addComponent(btnCadastro2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(183, 183, 183)
-                                .addComponent(btnCadastro1)))
+                        .addGap(183, 183, 183)
+                        .addComponent(btnCadastro1)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(304, 304, 304)
+                                .addComponent(btnSair))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(262, 262, 262)
+                                .addComponent(btnLista)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(161, Short.MAX_VALUE)
-                .addComponent(txtAmostra)
-                .addGap(159, 159, 159))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(304, 304, 304)
-                .addComponent(btnSair)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,7 +168,24 @@ public Exemplo04()
     }//GEN-LAST:event_btnCadastro2ActionPerformed
 
     private void btnListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaActionPerformed
-        // TODO add your handling code here:
+        
+        DefaultTableModel tabela = (DefaultTableModel) tblFuncionarios.getModel();
+        
+        tabela.setRowCount(0);
+        
+        for (Funcionarios funcionario : escola.getFuncionarios())
+        {
+            Object linha[] = new Object[3];
+            linha[0] = funcionario.getNome();
+            linha[1] = funcionario;
+            linha[2] = funcionario.calcularSalario();
+            
+            tabela.addRow(linha);
+        }
+        
+    String texto = "A escola possui %d funcionarios e a folha de pagamento E de R$ %.2f";
+    txtAmostra.setText(String.format(texto, escola.getFuncionarios(), escola.calcularValorTotal()) );
+        
     }//GEN-LAST:event_btnListaActionPerformed
 
     /**
