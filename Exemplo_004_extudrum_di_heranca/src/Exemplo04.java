@@ -184,7 +184,10 @@ public Exemplo04()
         }
         
     String texto = "A escola possui %d funcionarios e a folha de pagamento E de R$ %.2f";
-    txtAmostra.setText(String.format(texto, escola.getFuncionarios(), escola.calcularValorTotal()) );
+    txtAmostra.setText(String.format(
+            texto,
+            escola.getFuncionarios().size(),
+            escola.calcularValorTotal()) );
         
     }//GEN-LAST:event_btnListaActionPerformed
 
