@@ -18,7 +18,7 @@ public abstract class Animal {
     }
     public void exibirDados()
     {
-        System msg = String.format("este animal é o()",nome);
+        String msg = String.format("este animal é o()",getNome());
         System.out.println("");
     }
     public abstract void emitirSom(); 
