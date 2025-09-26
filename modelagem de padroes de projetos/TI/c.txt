@@ -1,0 +1,258 @@
+Claro! Vamos projetar e implementar um sistema simples de **menu de restaurante em Java usando o padrão Factory Method**, com suporte à construção via **Apache Ant**.
+
+---
+
+### 🎯 Objetivo
+
+Criar uma aplicação Java com:
+
+* Um sistema de menu de restaurante.
+* Uso do **padrão Factory Method** para criação de pratos.
+* Um **build.xml** do **Ant** para compilar, limpar e rodar o projeto.
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
+RestaurantMenu/
+├── build.xml
+├── src/
+│   └── menu/
+│       ├── Dish.java
+│       ├── DishFactory.java
+│       ├── Pasta.java
+│       ├── Pizza.java
+│       ├── Salad.java
+│       ├── Menu.java
+│       └── Main.java
+└── build/         (gerado pelo Ant)
+```
+
+---
+
+## 🧠 Padrão Factory Method
+
+Criaremos uma interface `Dish`, implementada por pratos específicos (`Pizza`, `Pasta`, `Salad`). O Factory Method estará na classe `DishFactory`, que criará os objetos `Dish` com base em um tipo passado.
+
+---
+
+## ✅ 1. Código-Fonte Java
+
+### `Dish.java`
+
+```java
+package menu;
+
+public interface Dish {
+    String getName();
+    double getPrice();
+}
+```
+
+---
+
+### `Pizza.java`
+
+```java
+package menu;
+
+public class Pizza implements Dish {
+    public String getName() {
+        return "Pizza";
+    }
+
+    public double getPrice() {
+        return 25.00;
+    }
+}
+```
+
+---
+
+### `Pasta.java`
+
+```java
+package menu;
+
+public class Pasta implements Dish {
+    public String getName() {
+        return "Pasta";
+    }
+
+    public double getPrice() {
+        return 18.50;
+    }
+}
+```
+
+---
+
+### `Salad.java`
+
+```java
+package menu;
+
+public class Salad implements Dish {
+    public String getName() {
+        return "Salad";
+    }
+
+    public double getPrice() {
+        return 12.00;
+    }
+}
+```
+
+---
+
+### `DishFactory.java`
+
+```java
+package menu;
+
+public class DishFactory {
+
+    public static Dish createDish(String type) {
+        switch (type.toLowerCase()) {
+            case "pizza":
+                return new Pizza();
+            case "pasta":
+                return new Pasta();
+            case "salad":
+                return new Salad();
+            default:
+                throw new IllegalArgumentException("Unknown dish type: " + type);
+        }
+    }
+}
+```
+
+---
+
+### `Menu.java`
+
+```java
+package menu;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Menu {
+    private List<Dish> dishes;
+
+    public Menu() {
+        dishes = new ArrayList<>();
+    }
+
+    public void addDish(String type) {
+        try {
+            Dish dish = DishFactory.createDish(type);
+            dishes.add(dish);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void printMenu() {
+        System.out.println("Restaurant Menu:");
+        for (Dish dish : dishes) {
+            System.out.println("- " + dish.getName() + " : $" + dish.getPrice());
+        }
+    }
+}
+```
+
+---
+
+### `Main.java`
+
+```java
+package menu;
+
+public class Main {
+    public static void main(String[] args) {
+        Menu menu = new Menu();
+
+        menu.addDish("Pizza");
+        menu.addDish("Pasta");
+        menu.addDish("Salad");
+        menu.addDish("Burger"); // desconhecido, deve lançar exceção
+
+        menu.printMenu();
+    }
+}
+```
+
+---
+
+## 🔧 2. `build.xml` (Arquivo do Ant)
+
+Crie este arquivo na raiz (`RestaurantMenu/build.xml`):
+
+```xml
+<project name="RestaurantMenu" default="run" basedir=".">
+    <property name="src.dir"     value="src"/>
+    <property name="build.dir"   value="build"/>
+    <property name="main-class"  value="menu.Main"/>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${build.dir}"/>
+    </target>
+
+    <target name="run" depends="compile">
+        <java classname="${main-class}" fork="true" >
+            <classpath>
+                <pathelement path="${build.dir}"/>
+            </classpath>
+        </java>
+    </target>
+</project>
+```
+
+---
+
+## 🚀 3. Como Executar
+
+1. **Instale o Ant** (se ainda não tiver):
+
+```bash
+sudo apt install ant   # Linux (Debian/Ubuntu)
+```
+
+2. **Navegue até a pasta** do projeto:
+
+```bash
+cd RestaurantMenu
+```
+
+3. **Execute o projeto com Ant**:
+
+```bash
+ant
+```
+
+4. **Saída esperada**:
+
+```
+Unknown dish type: Burger
+Restaurant Menu:
+- Pizza : $25.0
+- Pasta : $18.5
+- Salad : $12.0
+```
+
+---
+
+## 🧪 Teste Extra (Opcional)
+
+Você pode adaptar o `Menu` para receber entrada do usuário ou carregar de arquivo, tornando o sistema mais robusto.
+
+---
+
+Se quiser, posso te ajudar a empacotar como `.jar`, criar testes unitários com JUnit, ou expandir com um menu interativo. Deseja isso?
