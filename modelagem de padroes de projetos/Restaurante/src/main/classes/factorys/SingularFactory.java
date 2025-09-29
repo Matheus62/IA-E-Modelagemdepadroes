@@ -1,25 +1,25 @@
 package main.classes.factorys;
 
-import main.classes.produtos.Carro;
 import main.classes.produtos.CarroSimples;
+import main.classes.produtos.Pedido;
 
 public class SingularFactory implements PedidoFactory {
 
-    private String placa;
+    private String Pedido;
     private String marca;
     private String cor;
     private Double valorAluguel;
 
     private SingularFactory(Builder builder) {
-        this.placa = builder.placa;
+        this.Pedido = builder.placa;
         this.marca = builder.marca;
         this.cor = builder.cor;
         this.valorAluguel = builder.valorAluguel;
     }
 
     @Override
-    public Carro criarCarro() {
-        return new CarroSimples(placa, marca, cor, valorAluguel);
+    public Pedido criarPedido() {
+        return new CarroSimples(Pedido, marca, cor, valorAluguel);
     }
 
     public static class Builder {

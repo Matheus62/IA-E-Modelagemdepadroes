@@ -1,7 +1,7 @@
 package main.classes.factorys;
 
-import main.classes.produtos.Carro;
 import main.classes.produtos.CarroEsportivo;
+import main.classes.produtos.Pedido;
 
 public class FestaFactory implements PedidoFactory{
     private String placa;
@@ -17,7 +17,7 @@ public class FestaFactory implements PedidoFactory{
     }
 
     @Override
-    public Carro criarCarro() {
+    public Pedido criarPedido() {
         return new CarroEsportivo(placa, marca, cor, valorAluguel);
     }
 

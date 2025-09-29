@@ -1,7 +1,7 @@
 package main.classes.factorys;
 
-import main.classes.produtos.Carro;
+import main.classes.produtos.Pedido;
 
 public interface PedidoFactory {
-    Carro criarCarro();
+    Pedido criarPedido();
 }

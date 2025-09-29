@@ -1,7 +1,7 @@
 package main.classes.factorys;
 
-import main.classes.produtos.Carro;
 import main.classes.produtos.CarroLuxo;
+import main.classes.produtos.Pedido;
 
 /*Utilizando Abstract Factory e Builder*/
 public class FamiliaFactory implements PedidoFactory {
@@ -19,7 +19,7 @@ public class FamiliaFactory implements PedidoFactory {
     }
 
     @Override
-    public Carro criarCarro() {
+    public Pedido criarPedido() {
         return new CarroLuxo(placa, marca, cor, valorAluguel);
     }
 

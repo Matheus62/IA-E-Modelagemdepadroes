@@ -1,6 +1,6 @@
 package main.classes.produtos;
 
-public class CarroSimples implements Carro, Cloneable {
+public class CarroSimples implements Pedido, Cloneable {
 
     private static Long count = (long) 0;
     private Long id;

@@ -12,10 +12,10 @@ import main.classes.factorys.FestaFactory;
 import main.classes.factorys.FamiliaFactory;
 import main.classes.factorys.SingularFactory;
 import main.classes.menu.GaragemCarro;
-import main.classes.produtos.Carro;
 import main.classes.produtos.CarroEsportivo;
 import main.classes.produtos.CarroLuxo;
 import main.classes.factorys.PedidoFactory;
+import main.classes.produtos.Pedido;
 
 /**
  *
@@ -25,7 +25,7 @@ public class EditarPedidos extends javax.swing.JFrame {
 
     private int i;
     private GaragemCarro garagem = GaragemCarro.getInstance();
-    private Carro carro;
+    private Pedido carro;
     private PedidoFactory factory;
 
     private boolean validarCampos() {
@@ -110,7 +110,7 @@ public class EditarPedidos extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastrar Produto"));
 
-        jLabel1.setText("Alterar placa de");
+        jLabel1.setText("Alterar Item de");
 
         jLabel2.setText("Alterar marca de");
 
@@ -276,9 +276,9 @@ public class EditarPedidos extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         try {
-            List<Carro> carros = garagem.getListaCarros();
-            Carro carro = carros.get(i);
-            Carro carroOld = (Carro) carro.clone();
+            List<Pedido> carros = garagem.getListaCarros();
+            Pedido carro = carros.get(i);
+            Pedido carroOld = (Pedido) carro.clone();
             txtPlaca.setText(carro.getPlaca());
             txtMarca.setText(carro.getMarca());
             txtCor.setText(carro.getCor());
@@ -316,7 +316,7 @@ public class EditarPedidos extends javax.swing.JFrame {
                     .marca(txtMarca.getText())
                     .valorAluguel((Double) Double.parseDouble(txtValAluguel.getText()))
                     .build();
-            carro = factory.criarCarro();
+            carro = factory.criarPedido();
             garagem = GaragemCarro.getInstance();
             garagem.editarCarro(carro, this.i);
             JOptionPane.showMessageDialog(null, "Carro editado com sucesso!", "Alerta!", 1);
@@ -327,7 +327,7 @@ public class EditarPedidos extends javax.swing.JFrame {
                     .marca(txtMarca.getText())
                     .valorAluguel((Double) Double.parseDouble(txtValAluguel.getText()))
                     .build();
-            carro = factory.criarCarro();
+            carro = factory.criarPedido();
             garagem = GaragemCarro.getInstance();
             garagem.editarCarro(carro, this.i);
             JOptionPane.showMessageDialog(null, "Carro editado com sucesso!", "Alerta!", 1);
@@ -338,7 +338,7 @@ public class EditarPedidos extends javax.swing.JFrame {
                     .marca(txtMarca.getText())
                     .valorAluguel((Double) Double.parseDouble(txtValAluguel.getText()))
                     .build();
-            carro = factory.criarCarro();
+            carro = factory.criarPedido();
             garagem = GaragemCarro.getInstance();
             garagem.editarCarro(carro, this.i);
             JOptionPane.showMessageDialog(null, "Carro cadastrado com sucesso!", "Alerta!", 1);

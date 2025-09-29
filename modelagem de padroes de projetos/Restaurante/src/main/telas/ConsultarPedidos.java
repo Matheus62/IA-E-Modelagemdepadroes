@@ -7,8 +7,8 @@ package main.telas;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import main.classes.menu.GaragemCarro;
-import main.classes.produtos.Carro;
 import main.classes.produtos.CarroLuxo;
+import main.classes.produtos.Pedido;
 
 /**
  *
@@ -18,7 +18,7 @@ public class ConsultarPedidos extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ConsultarPedidos.class.getName());
 
-    private Carro carro;
+    private Pedido carro;
     private GaragemCarro garagem;
 
     public ConsultarPedidos() {
@@ -138,7 +138,7 @@ public class ConsultarPedidos extends javax.swing.JFrame {
         DefaultTableModel tabela = (DefaultTableModel) tbCarros.getModel();
         tabela.setRowCount(0);
         garagem = GaragemCarro.getInstance();
-        for (Carro carro : garagem.getListaCarros()) {
+        for (Pedido carro : garagem.getListaCarros()) {
             tabela.addRow(new Object[]{carro.getId(), carro.getPlaca(), carro.getMarca(), carro.getCor(),
                 carro.getValorAluguel(), carro.getTipo(), carro.getStatus()});
         }

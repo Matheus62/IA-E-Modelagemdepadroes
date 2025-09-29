@@ -7,12 +7,12 @@ package main.telas;
 import java.util.Enumeration;
 import main.classes.factorys.FamiliaFactory;
 import main.classes.menu.GaragemCarro;
-import main.classes.produtos.Carro;
 import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
 import main.classes.factorys.FestaFactory;
 import main.classes.factorys.SingularFactory;
 import main.classes.factorys.PedidoFactory;
+import main.classes.produtos.Pedido;
 
 /**
  *
@@ -23,7 +23,7 @@ public class CadastrarPedidos extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CadastrarPedidos.class.getName());
 
     private GaragemCarro garagem;
-    private Carro carro;
+    private Pedido carro;
     private PedidoFactory factory;
 
     private boolean validarCampos() {
@@ -98,7 +98,7 @@ public class CadastrarPedidos extends javax.swing.JFrame {
 
         jLabel3.setText("Preferencias");
 
-        jLabel4.setText("Valor de Aluguel");
+        jLabel4.setText("Valor");
 
         jButton1.setText("Cadastrar Carro");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -219,13 +219,13 @@ public class CadastrarPedidos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Alerta!", 2);
             return;
         }
-        if (Luxo.isSelected(Singular
+        if (Singular.isSelected(Singular
             factory = new FamiliaFactory.Builder(txtPlaca.getText())
                     .cor(txtCor.getText())
                     .marca(txtMarca.getText())
                     .valorAluguel((Double) Double.parseDouble(txtValAluguel.getText()))
                     .build();
-            carro = factory.criarCarro();
+            carro = factory.criarPedido();
             garagem = GaragemCarro.getInstance();
             garagem.adicionarCarro(carro);
             JOptionPane.showMessageDialog(null, "Carro cadastrado com sucesso!", "Alerta!", 1);
@@ -237,7 +237,7 @@ public class CadastrarPedidos extends javax.swing.JFrame {
                     .marca(txtMarca.getText())
                     .valorAluguel((Double) Double.parseDouble(txtValAluguel.getText()))
                     .build();
-            carro = factory.criarCarro();
+            carro = factory.criarPedido();
             garagem = GaragemCarro.getInstance();
             garagem.adicionarCarro(carro);
             JOptionPane.showMessageDialog(null, "Carro cadastrado com sucesso!", "Alerta!", 1);
@@ -249,7 +249,7 @@ public class CadastrarPedidos extends javax.swing.JFrame {
                     .marca(txtMarca.getText())
                     .valorAluguel((Double) Double.parseDouble(txtValAluguel.getText()))
                     .build();
-            carro = factory.criarCarro();
+            carro = factory.criarPedido();
             garagem = GaragemCarro.getInstance();
             garagem.adicionarCarro(carro);
             JOptionPane.showMessageDialog(null, "Carro cadastrado com sucesso!", "Alerta!", 1);

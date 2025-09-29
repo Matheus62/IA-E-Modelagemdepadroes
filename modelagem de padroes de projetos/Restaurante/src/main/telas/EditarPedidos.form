@@ -175,7 +175,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Alterar placa de"/>
+            <Property name="text" type="java.lang.String" value="Alterar Item de"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">

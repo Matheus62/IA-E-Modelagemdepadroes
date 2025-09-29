@@ -1,6 +1,6 @@
 package main.classes.produtos;
 
-public interface Carro {
+public interface Pedido {
     void alugar();
     String getTipo();
     Long getId();

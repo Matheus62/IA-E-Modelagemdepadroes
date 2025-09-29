@@ -9,7 +9,7 @@ import java.util.List;
 import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
 import main.classes.menu.GaragemCarro;
-import main.classes.produtos.Carro;
+import main.classes.produtos.Pedido;
 
 /**
  *
@@ -141,8 +141,8 @@ public class GerenciarPedidos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        List<Carro> carros = garagem.getListaCarros();
-        Carro carro = carros.get(this.i);
+        List<Pedido> carros = garagem.getListaCarros();
+        Pedido carro = carros.get(this.i);
         switch(carro.getStatus()){
             case "Disponivel":
                 Disponivel.setSelected(true);
@@ -163,7 +163,7 @@ public class GerenciarPedidos extends javax.swing.JFrame {
             AbstractButton btn = botoes.nextElement();
             if (btn.isSelected()) status = btn.getText();
         }
-        Carro carro = garagem.getListaCarros().get(this.i);
+        Pedido carro = garagem.getListaCarros().get(this.i);
         carro.setStatus(status);
         garagem.editarCarro(carro, this.i);
         JOptionPane.showMessageDialog(null, "Status alterado com sucesso!", "Info", 1);
