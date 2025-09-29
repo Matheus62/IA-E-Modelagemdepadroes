@@ -13,23 +13,23 @@ import javax.swing.JOptionPane;
  *
  * @author EAS
  */
-public class carroGerencia extends javax.swing.JFrame {
-    private ListaCarro garagem = ListaCarro.getInstance();
+public class NavioGerencia extends javax.swing.JFrame {
+    private ListaNavio frota = ListaNavio.getInstance();
     private int i;
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(carroGerencia.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(NavioGerencia.class.getName());
 
     /**
      * Creates new form GerenciarCarros
      * @param i
      */
     
-    public carroGerencia(int i) {
+    public NavioGerencia(int i) {
         this.i = i;
         initComponents();
     }
 
-    public carroGerencia() {
+    public NavioGerencia() {
         initComponents();
     }
 
@@ -44,7 +44,7 @@ public class carroGerencia extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         PainelP = new javax.swing.JPanel();
-        lblPlaca = new javax.swing.JLabel();
+        lblNome = new javax.swing.JLabel();
         Disponivel = new javax.swing.JRadioButton();
         Manutencao = new javax.swing.JRadioButton();
         Alugado = new javax.swing.JRadioButton();
@@ -59,8 +59,8 @@ public class carroGerencia extends javax.swing.JFrame {
 
         PainelP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        lblPlaca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblPlaca.setText("Placa:");
+        lblNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblNome.setText("Placa:");
 
         buttonGroup1.add(Disponivel);
         Disponivel.setText("Disponivel");
@@ -69,7 +69,7 @@ public class carroGerencia extends javax.swing.JFrame {
         Manutencao.setText("Manutencao");
 
         buttonGroup1.add(Alugado);
-        Alugado.setText("Alugado");
+        Alugado.setText("Em operação");
 
         jButton1.setText("Salvar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +87,7 @@ public class carroGerencia extends javax.swing.JFrame {
                     .addGroup(PainelPLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(PainelPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Disponivel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Manutencao, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Alugado, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -100,7 +100,7 @@ public class carroGerencia extends javax.swing.JFrame {
             PainelPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelPLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(lblPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Disponivel)
                 .addGap(21, 21, 21)
@@ -133,20 +133,20 @@ public class carroGerencia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        List<Carro> carros = garagem.getListaCarros();
-        Carro carro = carros.get(this.i);
-        switch(carro.getStatus()){
+        List<Navio> navios = frota.getListaNavios();
+        Navio navio = navios.get(this.i);
+        switch(navio.getStatus()){
             case "Disponivel":
                 Disponivel.setSelected(true);
                 break;
             case "Manutencao":
                 Manutencao.setSelected(true);
                 break;
-            case "Alugado":
+            case "em operação":
                 Alugado .setSelected(true);
                 break;
         }
-        lblPlaca.setText(lblPlaca.getText() + ' ' + carro.getPlaca());
+        lblNome.setText(lblNome.getText() + ' ' + navio.getNome());
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -155,10 +155,10 @@ public class carroGerencia extends javax.swing.JFrame {
             AbstractButton btn = botoes.nextElement();
             if (btn.isSelected()) status = btn.getText();
         }
-        Carro carro = garagem.getListaCarros().get(this.i);
-        carro.setStatus(status);
-        garagem.editarCarro(carro, this.i);
-        JOptionPane.showMessageDialog(null, "Status alterado com sucesso!", "Info", 1);
+        Navio navio = frota.getListaNavios().get(this.i);
+        navio.setStatus(status);
+        frota.editarNavio(navio, this.i);
+        JOptionPane.showMessageDialog(null, "Status alterado com sucesso!", "atenção", 1);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -184,7 +184,7 @@ public class carroGerencia extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new carroGerencia().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new NavioGerencia().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -194,6 +194,6 @@ public class carroGerencia extends javax.swing.JFrame {
     private javax.swing.JPanel PainelP;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel lblPlaca;
+    private javax.swing.JLabel lblNome;
     // End of variables declaration//GEN-END:variables
 }

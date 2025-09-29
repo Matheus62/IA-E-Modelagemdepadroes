@@ -1,12 +1,14 @@
 package main;
 
-public class CarroEsportivoFactory implements CarroFactory{
+/*Abstract e Builder*/
+public class CarroLF implements CarroF {
+
     private String placa;
     private String marca;
     private String cor;
     private Double valorAluguel;
 
-    private CarroEsportivoFactory(Builder builder) {
+    private CarroLF(Builder builder) {
         this.placa = builder.placa;
         this.marca = builder.marca;
         this.cor = builder.cor;
@@ -15,7 +17,7 @@ public class CarroEsportivoFactory implements CarroFactory{
 
     @Override
     public Carro inserirCarro() {
-        return new CarroEsportivo(placa, marca, cor, valorAluguel);
+        return new CarroLP(placa, marca, cor, valorAluguel);
     }
 
     public static class Builder {
@@ -40,8 +42,8 @@ public class CarroEsportivoFactory implements CarroFactory{
             this.valorAluguel = valorAluguel;
             return this;
         }
-        public CarroEsportivoFactory build(){
-            return new CarroEsportivoFactory(this);
+        public CarroLF build(){
+            return new CarroLF(this);
         }
     }
 }

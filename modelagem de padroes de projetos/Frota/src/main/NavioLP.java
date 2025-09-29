@@ -1,28 +1,28 @@
 package main;
 
-public class CarroSimples implements Carro, Cloneable {
+public class NavioLP implements Navio, Cloneable {
 
     private static Long count = (long) 0;
     private Long id;
-    private String placa;
-    private String marca;
+    private String Nome;
+    private String modelo;
     private String cor;
-    private Double valorAluguel;
+    private Double valorOperacao;
     private String status;
 
-    public CarroSimples(String placa, String marca, String cor, Double valorAluguel) {
+    public NavioLP(String placa, String marca, String cor, Double valorAluguel) {
         this.id = count;
         count++;
-        this.placa = placa;
-        this.marca = marca;
+        this.Nome = placa;
+        this.modelo = marca;
         this.cor = cor;
-        this.valorAluguel = valorAluguel;
+        this.valorOperacao = valorAluguel;
         this.status = "Disponivel";
     }
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-    return new CarroSimples(placa, marca, cor, valorAluguel);
+    return new NavioSP(Nome, modelo, cor, valorOperacao);
     }
     
     @Override
@@ -40,21 +40,21 @@ public class CarroSimples implements Carro, Cloneable {
     }
 
     @Override
-    public String getPlaca() {
-        return placa;
+    public String getNome() {
+        return Nome;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
+    public void setNome(String Nome) {
+        this.Nome = Nome;
     }
 
     @Override
-    public String getMarca() {
-        return marca;
+    public String getModelo() {
+        return modelo;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
     }
 
     @Override
@@ -67,17 +67,17 @@ public class CarroSimples implements Carro, Cloneable {
     }
     
     @Override
-    public Double getValorAluguel() {
-        return valorAluguel;
+    public Double getValorOperac() {
+        return valorOperacao;
     }
 
-    public void setValorAluguel(Double valorAluguel) {
-        this.valorAluguel = valorAluguel;
+    public void setValorOperacao(Double valorOperacao) {
+        this.valorOperacao = valorOperacao;
     }
 
     @Override
     public String getTipo() {
-        return "Carro Simples";
+        return "Navio Simples";
     }
 
     @Override

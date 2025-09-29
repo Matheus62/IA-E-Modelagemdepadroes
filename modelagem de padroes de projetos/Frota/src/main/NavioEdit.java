@@ -13,26 +13,26 @@ import javax.swing.JOptionPane;
  *
  * @author aluno
  */
-public class carroEdit extends javax.swing.JFrame {
+public class NavioEdit extends javax.swing.JFrame {
 
     private int i;
-    private ListaCarro garagem = ListaCarro.getInstance();
-    private Carro carro;
-    private CarroF factory;
+    private ListaNavio garagem = ListaNavio.getInstance();
+    private Navio carro;
+    private NavioF factory;
 
     private boolean validarCampos() {
         boolean checkTxt = true;
         boolean checkBtn = false;
-        if (txtPlaca.getText().trim().isEmpty()) {
+        if (txtNome.getText().trim().isEmpty()) {
             checkTxt = false;
         }
-        if (txtMarca.getText().trim().isEmpty()) {
+        if (txtModelo.getText().trim().isEmpty()) {
             checkTxt = false;
         }
         if (txtCor.getText().trim().isEmpty()) {
             checkTxt = false;
         }
-        if (txtValAluguel.getText().trim().isEmpty()) {
+        if (txtValOperac.getText().trim().isEmpty()) {
             checkTxt = false;
         }
         for (Enumeration<AbstractButton> botoes = buttonGroup1.getElements(); botoes.hasMoreElements();) {
@@ -51,11 +51,11 @@ public class carroEdit extends javax.swing.JFrame {
     /**
      * Creates new form EditarCarro
      */
-    public carroEdit() {
+    public NavioEdit() {
         initComponents();
     }
 
-    public carroEdit(int i) {
+    public NavioEdit(int i) {
         this.i = i;
         initComponents();
     }
@@ -75,10 +75,10 @@ public class carroEdit extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtPlaca = new javax.swing.JTextField();
-        txtMarca = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
+        txtModelo = new javax.swing.JTextField();
         txtCor = new javax.swing.JTextField();
-        txtValAluguel = new javax.swing.JTextField();
+        txtValOperac = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         Luxo = new javax.swing.JRadioButton();
         Esportivo = new javax.swing.JRadioButton();
@@ -94,13 +94,13 @@ public class carroEdit extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setText("Alterar placa");
+        jLabel1.setText("Alterar nome");
 
-        jLabel2.setText("Alterar marca");
+        jLabel2.setText("Alterar modelo");
 
         jLabel3.setText("Alterar cor");
 
-        jLabel4.setText("Alterar valor aluguel");
+        jLabel4.setText("Alterar valor de operação");
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -110,13 +110,18 @@ public class carroEdit extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(Luxo);
-        Luxo.setText("Carro de Luxo");
+        Luxo.setText("Navio de guerra");
 
         buttonGroup1.add(Esportivo);
-        Esportivo.setText("Carro Esportivo");
+        Esportivo.setText("Navio furtivo");
 
         buttonGroup1.add(Simples);
-        Simples.setText("Carro Simples");
+        Simples.setText("Navio simples");
+        Simples.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SimplesActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -140,10 +145,10 @@ public class carroEdit extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtValAluguel)
+                                .addComponent(txtValOperac)
                                 .addComponent(txtCor, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Simples, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -161,11 +166,11 @@ public class carroEdit extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -173,17 +178,23 @@ public class carroEdit extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtValAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtValOperac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Simples)
+                        .addGap(11, 11, 11)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Luxo))
-                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
+                        .addComponent(Esportivo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Luxo)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Esportivo)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Simples)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -201,7 +212,7 @@ public class carroEdit extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -209,17 +220,17 @@ public class carroEdit extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         try {
-            List<Carro> carros = garagem.getListaCarros();
-            Carro carro = carros.get(i);
-            Carro carroOld = (Carro) carro.clone();
-            txtPlaca.setText(carro.getPlaca());
-            txtMarca.setText(carro.getMarca());
+            List<Navio> carros = garagem.getListaNavios();
+            Navio carro = carros.get(i);
+            Navio carroOld = (Navio) carro.clone();
+            txtNome.setText(carro.getNome());
+            txtModelo.setText(carro.getModelo());
             txtCor.setText(carro.getCor());
-            txtValAluguel.setText(String.valueOf(carro.getValorAluguel()));
+            txtValOperac.setText(String.valueOf(carro.getValorOperac()));
             
-            if (carro instanceof CarroLP) {
+            if (carro instanceof NavioLP) {
                 Luxo.setSelected(true);
-            } else if (carro instanceof CarroEP) {
+            } else if (carro instanceof NavioEP) {
                 Esportivo.setSelected(true);
             } else {
                 Simples.setSelected(true);
@@ -242,47 +253,51 @@ public class carroEdit extends javax.swing.JFrame {
         }
         if (Luxo.isSelected()) 
         {
-            factory = new CarroLF.Builder(txtPlaca.getText())
+            factory = new NavioLF.Builder(txtNome.getText())
                     .cor(txtCor.getText())
-                    .marca(txtMarca.getText())
-                    .valorAluguel((Double) Double.parseDouble(txtValAluguel.getText()))
+                    .marca(txtModelo.getText())
+                    .valorAluguel((Double) Double.parseDouble(txtValOperac.getText()))
                     .build();
-            carro = factory.inserirCarro();
-            garagem = ListaCarro.getInstance();
-            garagem.editarCarro(carro, this.i);
+            carro = factory.inserirNavio();
+            garagem = ListaNavio.getInstance();
+            garagem.editarNavio(carro, this.i);
             JOptionPane.showMessageDialog(null, "Carro editado com sucesso!", "Alerta!", 1);
             this.dispose();
         } 
         
         else if (Esportivo.isSelected()) 
         {
-            factory = new CarroEF.Builder(txtPlaca.getText())
+            factory = new NavioEF.Builder(txtNome.getText())
                     .cor(txtCor.getText())
-                    .marca(txtMarca.getText())
-                    .valorAluguel((Double) Double.parseDouble(txtValAluguel.getText()))
+                    .marca(txtModelo.getText())
+                    .valorAluguel((Double) Double.parseDouble(txtValOperac.getText()))
                     .build();
-            carro = factory.inserirCarro();
-            garagem = ListaCarro.getInstance();
-            garagem.editarCarro(carro, this.i);
+            carro = factory.inserirNavio();
+            garagem = ListaNavio.getInstance();
+            garagem.editarNavio(carro, this.i);
             JOptionPane.showMessageDialog(null, "Carro editado com sucesso!", "Alerta!", 1);
             this.dispose();
         } 
         
         else if (Simples.isSelected()) 
         {
-            factory = new CarroSF.Builder(txtPlaca.getText())
+            factory = new NavioSF.Builder(txtNome.getText())
                     .cor(txtCor.getText())
-                    .marca(txtMarca.getText())
-                    .valorAluguel((Double) Double.parseDouble(txtValAluguel.getText()))
+                    .marca(txtModelo.getText())
+                    .valorAluguel((Double) Double.parseDouble(txtValOperac.getText()))
                     .build();
-            carro = factory.inserirCarro();
-            garagem = ListaCarro.getInstance();
-            garagem.editarCarro(carro, this.i);
+            carro = factory.inserirNavio();
+            garagem = ListaNavio.getInstance();
+            garagem.editarNavio(carro, this.i);
             JOptionPane.showMessageDialog(null, "Carro cadastrado com sucesso!", "Alerta!", 1);
             this.dispose();
         }
         
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void SimplesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SimplesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SimplesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,21 +316,27 @@ public class carroEdit extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(carroEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NavioEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(carroEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NavioEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(carroEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NavioEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(carroEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NavioEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new carroEdit().setVisible(true);
+                new NavioEdit().setVisible(true);
             }
         });
     }
@@ -333,8 +354,8 @@ public class carroEdit extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtCor;
-    private javax.swing.JTextField txtMarca;
-    private javax.swing.JTextField txtPlaca;
-    private javax.swing.JTextField txtValAluguel;
+    private javax.swing.JTextField txtModelo;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtValOperac;
     // End of variables declaration//GEN-END:variables
 }

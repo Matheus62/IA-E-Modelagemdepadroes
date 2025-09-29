@@ -11,14 +11,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author EAS
  */
-public class carroConsulta extends javax.swing.JFrame {
+public class NavioConsulta extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(carroConsulta.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(NavioConsulta.class.getName());
 
-    private Carro carro;
-    private ListaCarro lista;
+    private Navio carro;
+    private ListaNavio lista;
 
-    public carroConsulta() {
+    public NavioConsulta() {
         initComponents();
     }
 
@@ -32,7 +32,7 @@ public class carroConsulta extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbCarros = new javax.swing.JTable();
+        tbNavios = new javax.swing.JTable();
         btnCarregar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnDeletar = new javax.swing.JButton();
@@ -45,12 +45,12 @@ public class carroConsulta extends javax.swing.JFrame {
             }
         });
 
-        tbCarros.setModel(new javax.swing.table.DefaultTableModel(
+        tbNavios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Placa", "Valor Diária", "Tipo", "Marca", "Cor", "Status"
+                "ID", "Nome", "Valor por operação", "Tipo", "Modelo", "Cor", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -61,7 +61,7 @@ public class carroConsulta extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tbCarros);
+        jScrollPane1.setViewportView(tbNavios);
 
         btnCarregar.setText("Carregar");
         btnCarregar.addActionListener(new java.awt.event.ActionListener() {
@@ -132,47 +132,47 @@ public class carroConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void btnCarregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarActionPerformed
-        DefaultTableModel tabela = (DefaultTableModel) tbCarros.getModel();
+        DefaultTableModel tabela = (DefaultTableModel) tbNavios.getModel();
         tabela.setRowCount(0);
-        lista = ListaCarro.getInstance();
-        for (Carro carro : lista.getListaCarros()) {
-            tabela.addRow(new Object[]{carro.getId(), carro.getPlaca(), 
-                carro.getValorAluguel(),carro.getTipo(),
-                carro.getMarca(), carro.getCor(), carro.getStatus()});
+        lista = ListaNavio.getInstance();
+        for (Navio carro : lista.getListaNavios()) {
+            tabela.addRow(new Object[]{carro.getId(), carro.getNome(), 
+                carro.getValorOperac(),carro.getTipo(),
+                carro.getModelo(), carro.getCor(), carro.getStatus()});
         }
     }//GEN-LAST:event_btnCarregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        int row = tbCarros.getSelectedRow();
+        int row = tbNavios.getSelectedRow();
         if (row == -1) {
-            JOptionPane.showMessageDialog(this, "Selecione o carro!", "Atenção", 1);
+            JOptionPane.showMessageDialog(this, "Selecione o navio!", "Atenção", 1);
             return;
         }
-        carroEdit tela = new carroEdit(row);
+        NavioEdit tela = new NavioEdit(row);
         tela.setVisible(true);
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Deseja deletar o carro?", "Confirmar", 0) == 0) {
-            int row = tbCarros.getSelectedRow();
+        if (JOptionPane.showConfirmDialog(null, "Deseja deletar o navio?", "Confirmar", 0) == 0) {
+            int row = tbNavios.getSelectedRow();
             if (row == -1) {
-                JOptionPane.showMessageDialog(this, "Selecione o carro!", "Atenção", 1);
+                JOptionPane.showMessageDialog(this, "Selecione o navio!", "Atenção", 1);
                 return;
             }
-            lista.deletarCarro(row);
-            JOptionPane.showMessageDialog(null, "Carro deletado!", "Informação", 1);
-            DefaultTableModel tb = (DefaultTableModel) tbCarros.getModel();
+            lista.deletarNavio(row);
+            JOptionPane.showMessageDialog(null, "navio deletado!", "Informação", 1);
+            DefaultTableModel tb = (DefaultTableModel) tbNavios.getModel();
             tb.setRowCount(0);
         }
     }//GEN-LAST:event_btnDeletarActionPerformed
 
     private void btnGerenciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarActionPerformed
-       int row = tbCarros.getSelectedRow();
+       int row = tbNavios.getSelectedRow();
         if (row == -1) {
-            JOptionPane.showMessageDialog(this, "Selecione o carro!", "Atenção", 1);
+            JOptionPane.showMessageDialog(this, "Selecione o navio!", "Atenção", 1);
             return;
         }
-        carroGerencia tela = new carroGerencia(row);
+        NavioGerencia tela = new NavioGerencia(row);
         tela.setVisible(true);
     }//GEN-LAST:event_btnGerenciarActionPerformed
 
@@ -198,7 +198,7 @@ public class carroConsulta extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new carroConsulta().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new NavioConsulta().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -207,6 +207,6 @@ public class carroConsulta extends javax.swing.JFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnGerenciar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tbCarros;
+    private javax.swing.JTable tbNavios;
     // End of variables declaration//GEN-END:variables
 }

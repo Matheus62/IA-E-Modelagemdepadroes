@@ -16,9 +16,9 @@ public class carroCadastro extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(carroCadastro.class.getName());
 
-    private ListaCarro garagem;
+    private ListaCarro lista;
     private Carro carro;
-    private CarroFactory factory;
+    private CarroF factory;
 
     private boolean validarCampos() {
         boolean checkTxt = true;
@@ -202,40 +202,40 @@ public class carroCadastro extends javax.swing.JFrame {
         }
         if (Luxo.isSelected()) 
         {
-            factory = new CarroLuxoFactory.Builder(txtPlaca.getText())
+            factory = new CarroLF.Builder(txtPlaca.getText())
                     .cor(txtCor.getText())
                     .marca(txtMarca.getText())
                     .valorAluguel((Double) Double.parseDouble(txtValAluguel.getText()))
                     .build();
             carro = factory.inserirCarro();
-            garagem = ListaCarro.getInstance();
-            garagem.adicionarCarro(carro);
+            lista = ListaCarro.getInstance();
+            lista.adicionarCarro(carro);
             JOptionPane.showMessageDialog(null, "Carro cadastrado!", "!!!", 1);
             this.dispose();
         } 
         else if (Esportivo.isSelected()) 
         {
-            factory = new CarroEsportivoFactory.Builder(txtPlaca.getText())
+            factory = new CarroEF.Builder(txtPlaca.getText())
                     .cor(txtCor.getText())
                     .marca(txtMarca.getText())
                     .valorAluguel((Double) Double.parseDouble(txtValAluguel.getText()))
                     .build();
             carro = factory.inserirCarro();
-            garagem = ListaCarro.getInstance();
-            garagem.adicionarCarro(carro);
+            lista = ListaCarro.getInstance();
+            lista.adicionarCarro(carro);
             JOptionPane.showMessageDialog(null, "carro cadastrado!", "!!!", 1);
             this.dispose();
         } 
         else if (Simples.isSelected()) 
         {
-            factory = new CarroSimplesFactory.Builder(txtPlaca.getText())
+            factory = new CarroSF.Builder(txtPlaca.getText())
                     .cor(txtCor.getText())
                     .marca(txtMarca.getText())
                     .valorAluguel((Double) Double.parseDouble(txtValAluguel.getText()))
                     .build();
             carro = factory.inserirCarro();
-            garagem = ListaCarro.getInstance();
-            garagem.adicionarCarro(carro);
+            lista = ListaCarro.getInstance();
+            lista.adicionarCarro(carro);
             JOptionPane.showMessageDialog(null, "carro cadastrado!", "!!!", 1);
             this.dispose();
         }

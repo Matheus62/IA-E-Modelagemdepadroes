@@ -1,5 +1,5 @@
 package main;
 
-public interface CarroFactory {
+public interface CarroF {
     Carro inserirCarro();
 }
