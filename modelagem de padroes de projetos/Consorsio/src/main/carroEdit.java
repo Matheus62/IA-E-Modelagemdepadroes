@@ -2,26 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package main.frames;
+package main;
 
 import java.util.Enumeration;
 import java.util.List;
 import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
-import main.classes.FMeB.CarroEsportivoFactory;
-import main.classes.FMeB.CarroFactory;
-import main.classes.FMeB.CarroLuxoFactory;
-import main.classes.FMeB.CarroSimplesFactory;
-import main.classes.lista.ListaCarro;
-import main.classes.carros.Carro;
-import main.classes.carros.CarroEsportivo;
-import main.classes.carros.CarroLuxo;
 
 /**
  *
  * @author aluno
  */
-public class EditarCarro extends javax.swing.JFrame {
+public class carroEdit extends javax.swing.JFrame {
 
     private int i;
     private ListaCarro garagem = ListaCarro.getInstance();
@@ -59,11 +51,11 @@ public class EditarCarro extends javax.swing.JFrame {
     /**
      * Creates new form EditarCarro
      */
-    public EditarCarro() {
+    public carroEdit() {
         initComponents();
     }
 
-    public EditarCarro(int i) {
+    public carroEdit(int i) {
         this.i = i;
         initComponents();
     }
@@ -309,40 +301,48 @@ public class EditarCarro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Alerta!", 2);
             return;
         }
-        if (Luxo.isSelected()) {
+        if (Luxo.isSelected()) 
+        {
             factory = new CarroLuxoFactory.Builder(txtPlaca.getText())
                     .cor(txtCor.getText())
                     .marca(txtMarca.getText())
                     .valorAluguel((Double) Double.parseDouble(txtValAluguel.getText()))
                     .build();
-            carro = factory.criarCarro();
+            carro = factory.inserirCarro();
             garagem = ListaCarro.getInstance();
             garagem.editarCarro(carro, this.i);
             JOptionPane.showMessageDialog(null, "Carro editado com sucesso!", "Alerta!", 1);
             this.dispose();
-        } else if (Esportivo.isSelected()) {
+        } 
+        
+        else if (Esportivo.isSelected()) 
+        {
             factory = new CarroEsportivoFactory.Builder(txtPlaca.getText())
                     .cor(txtCor.getText())
                     .marca(txtMarca.getText())
                     .valorAluguel((Double) Double.parseDouble(txtValAluguel.getText()))
                     .build();
-            carro = factory.criarCarro();
+            carro = factory.inserirCarro();
             garagem = ListaCarro.getInstance();
             garagem.editarCarro(carro, this.i);
             JOptionPane.showMessageDialog(null, "Carro editado com sucesso!", "Alerta!", 1);
             this.dispose();
-        } else if (Simples.isSelected()) {
+        } 
+        
+        else if (Simples.isSelected()) 
+        {
             factory = new CarroSimplesFactory.Builder(txtPlaca.getText())
                     .cor(txtCor.getText())
                     .marca(txtMarca.getText())
                     .valorAluguel((Double) Double.parseDouble(txtValAluguel.getText()))
                     .build();
-            carro = factory.criarCarro();
+            carro = factory.inserirCarro();
             garagem = ListaCarro.getInstance();
             garagem.editarCarro(carro, this.i);
             JOptionPane.showMessageDialog(null, "Carro cadastrado com sucesso!", "Alerta!", 1);
             this.dispose();
         }
+        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
@@ -362,20 +362,21 @@ public class EditarCarro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditarCarro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(carroEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditarCarro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(carroEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditarCarro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(carroEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditarCarro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(carroEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditarCarro().setVisible(true);
+                new carroEdit().setVisible(true);
             }
         });
     }

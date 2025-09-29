@@ -1,8 +1,7 @@
-package main.classes.lista;
+package main;
 
 import java.util.ArrayList;
 import java.util.List;
-import main.classes.carros.Carro;
 
 public class ListaCarro {
 

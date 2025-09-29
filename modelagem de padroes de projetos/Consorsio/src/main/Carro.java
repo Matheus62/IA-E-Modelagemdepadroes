@@ -1,4 +1,4 @@
-package main.classes.carros;
+package main;
 
 public interface Carro {
     void alugar();

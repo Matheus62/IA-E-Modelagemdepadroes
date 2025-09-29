@@ -1,7 +1,4 @@
-package main.classes.FMeB;
-
-import main.classes.carros.Carro;
-import main.classes.carros.CarroSimples;
+package main;
 
 public class CarroSimplesFactory implements CarroFactory {
 
@@ -18,7 +15,7 @@ public class CarroSimplesFactory implements CarroFactory {
     }
 
     @Override
-    public Carro criarCarro() {
+    public Carro inserirCarro() {
         return new CarroSimples(placa, marca, cor, valorAluguel);
     }
 

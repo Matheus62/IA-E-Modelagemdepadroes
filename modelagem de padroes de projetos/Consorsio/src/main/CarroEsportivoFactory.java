@@ -1,17 +1,12 @@
-package main.classes.FMeB;
+package main;
 
-import main.classes.carros.Carro;
-import main.classes.carros.CarroLuxo;
-
-/*Utilizando Abstract Factory e Builder*/
-public class CarroLuxoFactory implements CarroFactory {
-
+public class CarroEsportivoFactory implements CarroFactory{
     private String placa;
     private String marca;
     private String cor;
     private Double valorAluguel;
 
-    private CarroLuxoFactory(Builder builder) {
+    private CarroEsportivoFactory(Builder builder) {
         this.placa = builder.placa;
         this.marca = builder.marca;
         this.cor = builder.cor;
@@ -19,8 +14,8 @@ public class CarroLuxoFactory implements CarroFactory {
     }
 
     @Override
-    public Carro criarCarro() {
-        return new CarroLuxo(placa, marca, cor, valorAluguel);
+    public Carro inserirCarro() {
+        return new CarroEsportivo(placa, marca, cor, valorAluguel);
     }
 
     public static class Builder {
@@ -45,8 +40,8 @@ public class CarroLuxoFactory implements CarroFactory {
             this.valorAluguel = valorAluguel;
             return this;
         }
-        public CarroLuxoFactory build(){
-            return new CarroLuxoFactory(this);
+        public CarroEsportivoFactory build(){
+            return new CarroEsportivoFactory(this);
         }
     }
 }

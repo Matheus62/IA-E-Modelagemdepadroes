@@ -1,8 +1,6 @@
-package main.classes.carros;
+package main;
 
-
-public class CarroLuxo implements Carro, Cloneable {
-
+public class CarroEsportivo implements Carro, Cloneable{
     private static Long count = (long) 0;
     private Long id;
     private String placa;
@@ -11,7 +9,7 @@ public class CarroLuxo implements Carro, Cloneable {
     private Double valorAluguel;
     private String status;
 
-    public CarroLuxo(String placa, String marca, String cor, Double valorAluguel) {
+    public CarroEsportivo(String placa, String marca, String cor, Double valorAluguel) {
         this.id = count;
         count++;
         this.placa = placa;
@@ -23,38 +21,25 @@ public class CarroLuxo implements Carro, Cloneable {
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-    return new CarroLuxo(placa, marca, cor, valorAluguel);
+    return new CarroEsportivo(placa, marca, cor, valorAluguel);
     }
-    
-    
 
+    
+    
     @Override
     public void alugar() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public String getTipo() {
-        return "Carro de Luxo";
-    }
-    @Override
-    public String toString() {
-        return String.format("Carro de Luxo: \n"
-                + "Id: %s\n"
-                + "Placa: %s\n"
-                + "Marca: %s\n"
-                + "Cor: %s\n"
-                + "ValorAluguel: %.2f", id, placa, marca, cor, valorAluguel);
-    }
-    @Override
     public Long getId() {
         return id;
     }
-
+    
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     @Override
     public String getPlaca() {
         return placa;
@@ -92,6 +77,11 @@ public class CarroLuxo implements Carro, Cloneable {
     }
 
     @Override
+    public String getTipo() {
+        return "Carro Esportivo";
+    }
+
+    @Override
     public String getStatus() {
         return status;
     }
@@ -100,6 +90,7 @@ public class CarroLuxo implements Carro, Cloneable {
     public void setStatus(String status) {
         this.status = status;
     }
+    
     
     
 }

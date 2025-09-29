@@ -1,6 +1,7 @@
-package main.classes.carros;
+package main;
 
-public class CarroSimples implements Carro, Cloneable {
+
+public class CarroLuxo implements Carro, Cloneable {
 
     private static Long count = (long) 0;
     private Long id;
@@ -10,7 +11,7 @@ public class CarroSimples implements Carro, Cloneable {
     private Double valorAluguel;
     private String status;
 
-    public CarroSimples(String placa, String marca, String cor, Double valorAluguel) {
+    public CarroLuxo(String placa, String marca, String cor, Double valorAluguel) {
         this.id = count;
         count++;
         this.placa = placa;
@@ -22,14 +23,29 @@ public class CarroSimples implements Carro, Cloneable {
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-    return new CarroSimples(placa, marca, cor, valorAluguel);
+    return new CarroLuxo(placa, marca, cor, valorAluguel);
     }
     
+    
+
     @Override
     public void alugar() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @Override
+    public String getTipo() {
+        return "Carro de Luxo";
+    }
+    @Override
+    public String toString() {
+        return String.format("Carro de Luxo: \n"
+                + "Id: %s\n"
+                + "Placa: %s\n"
+                + "Marca: %s\n"
+                + "Cor: %s\n"
+                + "ValorAluguel: %.2f", id, placa, marca, cor, valorAluguel);
+    }
     @Override
     public Long getId() {
         return id;
@@ -38,7 +54,7 @@ public class CarroSimples implements Carro, Cloneable {
     public void setId(Long id) {
         this.id = id;
     }
-
+    
     @Override
     public String getPlaca() {
         return placa;
@@ -65,7 +81,7 @@ public class CarroSimples implements Carro, Cloneable {
     public void setCor(String cor) {
         this.cor = cor;
     }
-    
+
     @Override
     public Double getValorAluguel() {
         return valorAluguel;
@@ -73,11 +89,6 @@ public class CarroSimples implements Carro, Cloneable {
 
     public void setValorAluguel(Double valorAluguel) {
         this.valorAluguel = valorAluguel;
-    }
-
-    @Override
-    public String getTipo() {
-        return "Carro Simples";
     }
 
     @Override

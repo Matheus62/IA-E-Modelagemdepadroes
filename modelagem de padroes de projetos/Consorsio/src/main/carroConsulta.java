@@ -2,26 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package main.frames;
+package main;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import main.classes.lista.ListaCarro;
-import main.classes.carros.Carro;
-import main.classes.carros.CarroLuxo;
 
 /**
  *
  * @author EAS
  */
-public class ConsultarCarros extends javax.swing.JFrame {
+public class carroConsulta extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ConsultarCarros.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(carroConsulta.class.getName());
 
     private Carro carro;
     private ListaCarro garagem;
 
-    public ConsultarCarros() {
+    public carroConsulta() {
         initComponents();
     }
 
@@ -53,7 +50,7 @@ public class ConsultarCarros extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Placa", "Marca", "Cor", "Valor Diária", "Tipo", "Status"
+                "ID", "Placa", "Valor Diária", "Tipo", "Marca", "Cor", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -98,23 +95,19 @@ public class ConsultarCarros extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(213, 213, 213)
-                .addComponent(btnEditar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(204, 204, 204)
-                .addComponent(btnGerenciar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(238, 238, 238)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCarregar)
-                    .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(btnCarregar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnGerenciar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -123,13 +116,11 @@ public class ConsultarCarros extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGerenciar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCarregar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCarregar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGerenciar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -145,8 +136,8 @@ public class ConsultarCarros extends javax.swing.JFrame {
         tabela.setRowCount(0);
         garagem = ListaCarro.getInstance();
         for (Carro carro : garagem.getListaCarros()) {
-            tabela.addRow(new Object[]{carro.getId(), carro.getPlaca(), carro.getMarca(), carro.getCor(),
-                carro.getValorAluguel(), carro.getTipo(), carro.getStatus()});
+            tabela.addRow(new Object[]{carro.getId(), carro.getPlaca(), carro.getValorAluguel(),carro.getTipo(),
+                carro.getMarca(), carro.getCor(), carro.getStatus()});
         }
     }//GEN-LAST:event_btnCarregarActionPerformed
 
@@ -156,7 +147,7 @@ public class ConsultarCarros extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Selecione o carro!", "Atenção", 1);
             return;
         }
-        EditarCarro tela = new EditarCarro(row);
+        carroEdit tela = new carroEdit(row);
         tela.setVisible(true);
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -180,7 +171,7 @@ public class ConsultarCarros extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Selecione o carro!", "Atenção", 1);
             return;
         }
-        GerenciarCarros tela = new GerenciarCarros(row);
+        carroGerencia tela = new carroGerencia(row);
         tela.setVisible(true);
     }//GEN-LAST:event_btnGerenciarActionPerformed
 
@@ -206,7 +197,7 @@ public class ConsultarCarros extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ConsultarCarros().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new carroConsulta().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

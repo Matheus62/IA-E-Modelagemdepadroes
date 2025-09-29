@@ -2,25 +2,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package main.frames;
+package main;
 
 import java.util.Enumeration;
-import main.classes.FMeB.CarroFactory;
-import main.classes.FMeB.CarroLuxoFactory;
-import main.classes.lista.ListaCarro;
-import main.classes.carros.Carro;
 import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
-import main.classes.FMeB.CarroEsportivoFactory;
-import main.classes.FMeB.CarroSimplesFactory;
 
 /**
  *
  * @author EAS
  */
-public class CadastrarCarro extends javax.swing.JFrame {
+public class carroCadastro extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CadastrarCarro.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(carroCadastro.class.getName());
 
     private ListaCarro garagem;
     private Carro carro;
@@ -54,7 +48,7 @@ public class CadastrarCarro extends javax.swing.JFrame {
         }
     }
 
-    public CadastrarCarro() {
+    public carroCadastro() {
         initComponents();
     }
 
@@ -203,7 +197,7 @@ public class CadastrarCarro extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (!validarCampos()) {
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Alerta!", 2);
+            JOptionPane.showMessageDialog(null, "Preencha os campos", "!!!", 2);
             return;
         }
         if (Luxo.isSelected()) 
@@ -213,10 +207,10 @@ public class CadastrarCarro extends javax.swing.JFrame {
                     .marca(txtMarca.getText())
                     .valorAluguel((Double) Double.parseDouble(txtValAluguel.getText()))
                     .build();
-            carro = factory.criarCarro();
+            carro = factory.inserirCarro();
             garagem = ListaCarro.getInstance();
             garagem.adicionarCarro(carro);
-            JOptionPane.showMessageDialog(null, "Carro cadastrado com sucesso!", "Alerta!", 1);
+            JOptionPane.showMessageDialog(null, "Carro cadastrado!", "!!!", 1);
             this.dispose();
         } 
         else if (Esportivo.isSelected()) 
@@ -226,10 +220,10 @@ public class CadastrarCarro extends javax.swing.JFrame {
                     .marca(txtMarca.getText())
                     .valorAluguel((Double) Double.parseDouble(txtValAluguel.getText()))
                     .build();
-            carro = factory.criarCarro();
+            carro = factory.inserirCarro();
             garagem = ListaCarro.getInstance();
             garagem.adicionarCarro(carro);
-            JOptionPane.showMessageDialog(null, "Carro cadastrado com sucesso!", "Alerta!", 1);
+            JOptionPane.showMessageDialog(null, "carro cadastrado!", "!!!", 1);
             this.dispose();
         } 
         else if (Simples.isSelected()) 
@@ -239,10 +233,10 @@ public class CadastrarCarro extends javax.swing.JFrame {
                     .marca(txtMarca.getText())
                     .valorAluguel((Double) Double.parseDouble(txtValAluguel.getText()))
                     .build();
-            carro = factory.criarCarro();
+            carro = factory.inserirCarro();
             garagem = ListaCarro.getInstance();
             garagem.adicionarCarro(carro);
-            JOptionPane.showMessageDialog(null, "Carro cadastrado com sucesso!", "Alerta!", 1);
+            JOptionPane.showMessageDialog(null, "carro cadastrado!", "!!!", 1);
             this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -269,7 +263,7 @@ public class CadastrarCarro extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new CadastrarCarro().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new carroCadastro().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
