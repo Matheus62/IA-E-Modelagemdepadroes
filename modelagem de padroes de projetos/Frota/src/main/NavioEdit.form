@@ -82,8 +82,8 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="Simples" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
-                              <Component id="Luxo" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
-                              <Component id="Esportivo" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
+                              <Component id="Furtivo" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
+                              <Component id="Guerra" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="35" pref="76" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -126,9 +126,9 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="Esportivo" min="-2" max="-2" attributes="0"/>
+                          <Component id="Guerra" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="Luxo" min="-2" max="-2" attributes="0"/>
+                          <Component id="Furtivo" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -183,7 +183,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="Luxo">
+        <Component class="javax.swing.JRadioButton" name="Furtivo">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroup1"/>
@@ -191,7 +191,7 @@
             <Property name="text" type="java.lang.String" value="Navio de guerra"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="Esportivo">
+        <Component class="javax.swing.JRadioButton" name="Guerra">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroup1"/>

@@ -1,6 +1,6 @@
 package main;
 
-public class NavioLP implements Navio, Cloneable {
+public class NavioFP implements Navio, Cloneable {
 
     private static Long count = (long) 0;
     private Long id;
@@ -10,7 +10,7 @@ public class NavioLP implements Navio, Cloneable {
     private Double valorOperacao;
     private String status;
 
-    public NavioLP(String placa, String marca, String cor, Double valorAluguel) {
+    public NavioFP(String placa, String marca, String cor, Double valorAluguel) {
         this.id = count;
         count++;
         this.Nome = placa;
@@ -22,7 +22,7 @@ public class NavioLP implements Navio, Cloneable {
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-    return new NavioSP(Nome, modelo, cor, valorOperacao);
+    return new NavioFP(Nome, modelo, cor, valorOperacao);
     }
     
     @Override
@@ -34,7 +34,7 @@ public class NavioLP implements Navio, Cloneable {
     public Long getId() {
         return id;
     }
-
+    
     public void setId(Long id) {
         this.id = id;
     }
@@ -77,7 +77,7 @@ public class NavioLP implements Navio, Cloneable {
 
     @Override
     public String getTipo() {
-        return "Navio Simples";
+        return "Navio Furtivo";
     }
 
     @Override

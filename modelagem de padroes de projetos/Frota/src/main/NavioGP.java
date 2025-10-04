@@ -1,6 +1,6 @@
 package main;
 
-public class NavioEP implements Navio, Cloneable {
+public class NavioGP implements Navio, Cloneable {
 
     private static Long count = (long) 0;
     private Long id;
@@ -10,7 +10,7 @@ public class NavioEP implements Navio, Cloneable {
     private Double valorOperacao;
     private String status;
 
-    public NavioEP(String placa, String marca, String cor, Double valorAluguel) {
+    public NavioGP(String placa, String marca, String cor, Double valorAluguel) {
         this.id = count;
         count++;
         this.Nome = placa;
@@ -22,7 +22,7 @@ public class NavioEP implements Navio, Cloneable {
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-    return new NavioSP(Nome, modelo, cor, valorOperacao);
+    return new NavioFP(Nome, modelo, cor, valorOperacao);
     }
     
     @Override

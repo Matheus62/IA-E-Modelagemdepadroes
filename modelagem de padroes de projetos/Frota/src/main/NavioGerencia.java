@@ -47,7 +47,7 @@ public class NavioGerencia extends javax.swing.JFrame {
         lblNome = new javax.swing.JLabel();
         Disponivel = new javax.swing.JRadioButton();
         Manutencao = new javax.swing.JRadioButton();
-        Alugado = new javax.swing.JRadioButton();
+        Operacao = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -68,8 +68,8 @@ public class NavioGerencia extends javax.swing.JFrame {
         buttonGroup1.add(Manutencao);
         Manutencao.setText("Manutencao");
 
-        buttonGroup1.add(Alugado);
-        Alugado.setText("Em operação");
+        buttonGroup1.add(Operacao);
+        Operacao.setText("Em operação");
 
         jButton1.setText("Salvar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -83,18 +83,17 @@ public class NavioGerencia extends javax.swing.JFrame {
         PainelPLayout.setHorizontalGroup(
             PainelPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelPLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(PainelPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PainelPLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(PainelPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Disponivel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Manutencao, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Alugado, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(PainelPLayout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(105, Short.MAX_VALUE))
+                    .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Disponivel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Manutencao, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Operacao, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(157, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelPLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         PainelPLayout.setVerticalGroup(
             PainelPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,10 +105,10 @@ public class NavioGerencia extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(Manutencao)
                 .addGap(18, 18, 18)
-                .addComponent(Alugado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addComponent(Operacao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addGap(35, 35, 35))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -133,9 +132,12 @@ public class NavioGerencia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
         List<Navio> navios = frota.getListaNavios();
         Navio navio = navios.get(this.i);
-        switch(navio.getStatus()){
+        
+        switch(navio.getStatus())
+        {
             case "Disponivel":
                 Disponivel.setSelected(true);
                 break;
@@ -143,23 +145,31 @@ public class NavioGerencia extends javax.swing.JFrame {
                 Manutencao.setSelected(true);
                 break;
             case "em operação":
-                Alugado .setSelected(true);
+                Operacao .setSelected(true);
                 break;
         }
+        
         lblNome.setText(lblNome.getText() + ' ' + navio.getNome());
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
         String status = "";
-        for(Enumeration<AbstractButton> botoes = buttonGroup1.getElements(); botoes.hasMoreElements();){
+        
+        for(Enumeration<AbstractButton> botoes = buttonGroup1.getElements(); botoes.hasMoreElements();)
+        {
             AbstractButton btn = botoes.nextElement();
             if (btn.isSelected()) status = btn.getText();
         }
+        
         Navio navio = frota.getListaNavios().get(this.i);
         navio.setStatus(status);
+        
         frota.editarNavio(navio, this.i);
         JOptionPane.showMessageDialog(null, "Status alterado com sucesso!", "atenção", 1);
         this.dispose();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -188,9 +198,9 @@ public class NavioGerencia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton Alugado;
     private javax.swing.JRadioButton Disponivel;
     private javax.swing.JRadioButton Manutencao;
+    private javax.swing.JRadioButton Operacao;
     private javax.swing.JPanel PainelP;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;

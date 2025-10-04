@@ -16,7 +16,7 @@ public class NavioSF implements NavioF {
 
     @Override
     public Navio inserirNavio() {
-        return new NavioSP(nome, modelo, cor, valorOperacao);
+        return new NavioFP(nome, modelo, cor, valorOperacao);
     }
 
     public static class Builder {

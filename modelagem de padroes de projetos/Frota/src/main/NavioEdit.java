@@ -16,8 +16,8 @@ import javax.swing.JOptionPane;
 public class NavioEdit extends javax.swing.JFrame {
 
     private int i;
-    private ListaNavio garagem = ListaNavio.getInstance();
-    private Navio carro;
+    private ListaNavio ListaN = ListaNavio.getInstance();
+    private Navio navio;
     private NavioF factory;
 
     private boolean validarCampos() {
@@ -80,8 +80,8 @@ public class NavioEdit extends javax.swing.JFrame {
         txtCor = new javax.swing.JTextField();
         txtValOperac = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
-        Luxo = new javax.swing.JRadioButton();
-        Esportivo = new javax.swing.JRadioButton();
+        Furtivo = new javax.swing.JRadioButton();
+        Guerra = new javax.swing.JRadioButton();
         Simples = new javax.swing.JRadioButton();
         btnCancelar = new javax.swing.JButton();
 
@@ -109,11 +109,11 @@ public class NavioEdit extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(Luxo);
-        Luxo.setText("Navio de guerra");
+        buttonGroup1.add(Furtivo);
+        Furtivo.setText("Navio de guerra");
 
-        buttonGroup1.add(Esportivo);
-        Esportivo.setText("Navio furtivo");
+        buttonGroup1.add(Guerra);
+        Guerra.setText("Navio furtivo");
 
         buttonGroup1.add(Simples);
         Simples.setText("Navio simples");
@@ -152,8 +152,8 @@ public class NavioEdit extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Simples, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Luxo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Esportivo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Furtivo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Guerra, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 76, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCancelar)
@@ -185,9 +185,9 @@ public class NavioEdit extends javax.swing.JFrame {
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Esportivo)
+                        .addComponent(Guerra)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Luxo)))
+                        .addComponent(Furtivo)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
@@ -220,19 +220,24 @@ public class NavioEdit extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         try {
-            List<Navio> carros = garagem.getListaNavios();
-            Navio carro = carros.get(i);
-            Navio carroOld = (Navio) carro.clone();
-            txtNome.setText(carro.getNome());
-            txtModelo.setText(carro.getModelo());
-            txtCor.setText(carro.getCor());
-            txtValOperac.setText(String.valueOf(carro.getValorOperac()));
+            List<Navio> navios = ListaN.getListaNavios();
+            Navio navio = navios.get(i);
+            Navio navioOld = (Navio) navio.clone();
+            txtNome.setText(navio.getNome());
+            txtModelo.setText(navio.getModelo());
+            txtCor.setText(navio.getCor());
+            txtValOperac.setText(String.valueOf(navio.getValorOperac()));
             
-            if (carro instanceof NavioLP) {
-                Luxo.setSelected(true);
-            } else if (carro instanceof NavioEP) {
-                Esportivo.setSelected(true);
-            } else {
+            if (navio instanceof NavioSP) 
+            {
+                Simples.setSelected(true);
+            } 
+            else if (navio instanceof NavioGP) 
+            {
+                Guerra.setSelected(true);
+            } 
+            else 
+            {
                 Simples.setSelected(true);
             }
         }catch(CloneNotSupportedException erro){
@@ -241,55 +246,56 @@ public class NavioEdit extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Deseja cancelar a edição?", "Confimar", 0) == 0) {
+        if (JOptionPane.showConfirmDialog(null, "Deseja não editar?", "Confimar", 0) == 0) {
             this.dispose();
         }
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if (!validarCampos()) {
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Alerta!", 2);
+        if (!validarCampos()) 
+        {
+            JOptionPane.showMessageDialog(null, "Preencha os campos >:(", "Alerta!", 2);
             return;
         }
-        if (Luxo.isSelected()) 
-        {
-            factory = new NavioLF.Builder(txtNome.getText())
-                    .cor(txtCor.getText())
-                    .marca(txtModelo.getText())
-                    .valorAluguel((Double) Double.parseDouble(txtValOperac.getText()))
-                    .build();
-            carro = factory.inserirNavio();
-            garagem = ListaNavio.getInstance();
-            garagem.editarNavio(carro, this.i);
-            JOptionPane.showMessageDialog(null, "Carro editado com sucesso!", "Alerta!", 1);
-            this.dispose();
-        } 
-        
-        else if (Esportivo.isSelected()) 
-        {
-            factory = new NavioEF.Builder(txtNome.getText())
-                    .cor(txtCor.getText())
-                    .marca(txtModelo.getText())
-                    .valorAluguel((Double) Double.parseDouble(txtValOperac.getText()))
-                    .build();
-            carro = factory.inserirNavio();
-            garagem = ListaNavio.getInstance();
-            garagem.editarNavio(carro, this.i);
-            JOptionPane.showMessageDialog(null, "Carro editado com sucesso!", "Alerta!", 1);
-            this.dispose();
-        } 
-        
-        else if (Simples.isSelected()) 
+        if (Furtivo.isSelected()) 
         {
             factory = new NavioSF.Builder(txtNome.getText())
                     .cor(txtCor.getText())
                     .marca(txtModelo.getText())
                     .valorAluguel((Double) Double.parseDouble(txtValOperac.getText()))
                     .build();
-            carro = factory.inserirNavio();
-            garagem = ListaNavio.getInstance();
-            garagem.editarNavio(carro, this.i);
-            JOptionPane.showMessageDialog(null, "Carro cadastrado com sucesso!", "Alerta!", 1);
+            navio = factory.inserirNavio();
+            ListaN = ListaNavio.getInstance();
+            ListaN.editarNavio(navio, this.i);
+            JOptionPane.showMessageDialog(null, "Carro editado!", "Alerta!", 1);
+            this.dispose();
+        } 
+        
+        else if (Guerra.isSelected()) 
+        {
+            factory = new NavioGF.Builder(txtNome.getText())
+                    .cor(txtCor.getText())
+                    .marca(txtModelo.getText())
+                    .valorAluguel((Double) Double.parseDouble(txtValOperac.getText()))
+                    .build();
+            navio = factory.inserirNavio();
+            ListaN = ListaNavio.getInstance();
+            ListaN.editarNavio(navio, this.i);
+            JOptionPane.showMessageDialog(null, "Carro editado!", "Alerta!", 1);
+            this.dispose();
+        } 
+        
+        else if (Simples.isSelected()) 
+        {
+            factory = new NavioFF.Builder(txtNome.getText())
+                    .cor(txtCor.getText())
+                    .marca(txtModelo.getText())
+                    .valorAluguel((Double) Double.parseDouble(txtValOperac.getText()))
+                    .build();
+            navio = factory.inserirNavio();
+            ListaN = ListaNavio.getInstance();
+            ListaN.editarNavio(navio, this.i);
+            JOptionPane.showMessageDialog(null, "Carro cadastrado!", "Alerta!", 1);
             this.dispose();
         }
         
@@ -342,8 +348,8 @@ public class NavioEdit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton Esportivo;
-    private javax.swing.JRadioButton Luxo;
+    private javax.swing.JRadioButton Furtivo;
+    private javax.swing.JRadioButton Guerra;
     private javax.swing.JRadioButton Simples;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalvar;

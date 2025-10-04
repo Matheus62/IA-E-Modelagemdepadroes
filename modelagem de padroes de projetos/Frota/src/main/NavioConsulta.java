@@ -15,7 +15,7 @@ public class NavioConsulta extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(NavioConsulta.class.getName());
 
-    private Navio carro;
+    private Navio navio;
     private ListaNavio lista;
 
     public NavioConsulta() {
@@ -143,23 +143,30 @@ public class NavioConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCarregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+
         int row = tbNavios.getSelectedRow();
+        
         if (row == -1) {
             JOptionPane.showMessageDialog(this, "Selecione o navio!", "Atenção", 1);
             return;
         }
+        
         NavioEdit tela = new NavioEdit(row);
         tela.setVisible(true);
+        
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Deseja deletar o navio?", "Confirmar", 0) == 0) {
+        if (JOptionPane.showConfirmDialog(null, "Deseja deletar o navio?", "Confirmar", 0) == 0) 
+        {
             int row = tbNavios.getSelectedRow();
+            
             if (row == -1) {
                 JOptionPane.showMessageDialog(this, "Selecione o navio!", "Atenção", 1);
                 return;
             }
             lista.deletarNavio(row);
+            
             JOptionPane.showMessageDialog(null, "navio deletado!", "Informação", 1);
             DefaultTableModel tb = (DefaultTableModel) tbNavios.getModel();
             tb.setRowCount(0);
@@ -167,11 +174,14 @@ public class NavioConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeletarActionPerformed
 
     private void btnGerenciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarActionPerformed
-       int row = tbNavios.getSelectedRow();
+       
+        int row = tbNavios.getSelectedRow();
+        
         if (row == -1) {
             JOptionPane.showMessageDialog(this, "Selecione o navio!", "Atenção", 1);
             return;
         }
+        
         NavioGerencia tela = new NavioGerencia(row);
         tela.setVisible(true);
     }//GEN-LAST:event_btnGerenciarActionPerformed

@@ -1,13 +1,13 @@
 package main;
 
-public class NavioLF implements NavioF {
+public class NavioGF implements NavioF {
 
     private String nome;
     private String modelo;
     private String cor;
     private Double valorOperacao;
 
-    private NavioLF(Builder builder) {
+    private NavioGF(Builder builder) {
         this.nome = builder.nome;
         this.modelo = builder.modelo;
         this.cor = builder.cor;
@@ -16,7 +16,7 @@ public class NavioLF implements NavioF {
 
     @Override
     public Navio inserirNavio() {
-        return new NavioSP(nome, modelo, cor, valorOperacao);
+        return new NavioFP(nome, modelo, cor, valorOperacao);
     }
 
     public static class Builder {
@@ -45,8 +45,8 @@ public class NavioLF implements NavioF {
             return this;
         }
 
-        public NavioLF build() {
-            return new NavioLF(this);
+        public NavioGF build() {
+            return new NavioGF(this);
         }
     }
 

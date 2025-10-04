@@ -22,7 +22,7 @@ public class NavioSP implements Navio, Cloneable {
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-    return new NavioSP(Nome, modelo, cor, valorOperacao);
+    return new NavioFP(Nome, modelo, cor, valorOperacao);
     }
     
     @Override
@@ -77,7 +77,7 @@ public class NavioSP implements Navio, Cloneable {
 
     @Override
     public String getTipo() {
-        return "Navio Furtivo";
+        return "Navio Simples";
     }
 
     @Override

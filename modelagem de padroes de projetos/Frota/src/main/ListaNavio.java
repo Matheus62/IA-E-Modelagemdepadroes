@@ -17,16 +17,18 @@ public class ListaNavio {
         }
         return instancia;
     }
+    
+    
     public void adicionarNavio(Navio navio){
         listaNavios.add(navio);
     }
     public void deletarNavio(int i){
         listaNavios.remove(i);
     }
-
     public void editarNavio(Navio navio, int i){
         listaNavios.set(i, navio);
     }
+    
     
     public List<Navio> getListaNavios() {
         return listaNavios;

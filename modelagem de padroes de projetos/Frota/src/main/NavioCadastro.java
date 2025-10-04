@@ -21,20 +21,27 @@ public class NavioCadastro extends javax.swing.JFrame {
     private NavioF factory;
 
     private boolean validarCampos() {
+        
         boolean checkTxt = true;
         boolean checkBtn = false;
-        if (txtNome.getText().trim().isEmpty()) {
+        
+        if (txtNome.getText().trim().isEmpty()) 
+        {
             checkTxt = false;
         }
-        if (txtModelo.getText().trim().isEmpty()) {
+        if (txtModelo.getText().trim().isEmpty()) 
+        {
             checkTxt = false;
         }
-        if (txtCor.getText().trim().isEmpty()) {
+        if (txtCor.getText().trim().isEmpty()) 
+        {
             checkTxt = false;
         }
-        if (txtValOperac.getText().trim().isEmpty()) {
+        if (txtValOperac.getText().trim().isEmpty()) 
+        {
             checkTxt = false;
         }
+        
         for (Enumeration<AbstractButton> botoes = buttonGroup1.getElements(); botoes.hasMoreElements();) {
             AbstractButton btn = botoes.nextElement();
             if (btn.isSelected()) {
@@ -87,11 +94,11 @@ public class NavioCadastro extends javax.swing.JFrame {
 
         jLabel1.setText("Nome");
 
-        jLabel2.setText("Modelo");
+        jLabel2.setText("Modelo:");
 
-        jLabel3.setText("Cor");
+        jLabel3.setText("Cor:");
 
-        jLabel4.setText("Valor por operação");
+        jLabel4.setText("Valor por operação:");
 
         jButton1.setText("Cadastrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -225,7 +232,7 @@ public class NavioCadastro extends javax.swing.JFrame {
         }
         if (Furtivo.isSelected())
         {
-            factory = new NavioLF.Builder(txtNome.getText())
+            factory = new NavioSF.Builder(txtNome.getText())
             .cor(txtCor.getText())
             .marca(txtModelo.getText())
             .valorAluguel((Double) Double.parseDouble(txtValOperac.getText()))
@@ -238,7 +245,7 @@ public class NavioCadastro extends javax.swing.JFrame {
         }
         else if (Guerra.isSelected())
         {
-            factory = new NavioEF.Builder(txtNome.getText())
+            factory = new NavioGF.Builder(txtNome.getText())
             .cor(txtCor.getText())
             .marca(txtModelo.getText())
             .valorAluguel((Double) Double.parseDouble(txtValOperac.getText()))
@@ -251,7 +258,7 @@ public class NavioCadastro extends javax.swing.JFrame {
         }
         else if (Simples.isSelected())
         {
-            factory = new NavioSF.Builder(txtNome.getText())
+            factory = new NavioFF.Builder(txtNome.getText())
             .cor(txtCor.getText())
             .marca(txtModelo.getText())
             .valorAluguel((Double) Double.parseDouble(txtValOperac.getText()))
