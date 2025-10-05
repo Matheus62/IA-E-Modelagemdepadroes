@@ -5,16 +5,30 @@ import java.util.List;
 
 public class ListaNavio {
 
+    /* 
+    ListaNavio é a classe responsável por gerenciar a coleção de todos os 
+    objetos Navio criados. 
+    Ela centraliza o armazenamento, a adição, a remoção 
+    e a consulta de navios.
+    */
     private final List<Navio> listaNavios = new ArrayList<>();
     private static ListaNavio instancia;
 
     private ListaNavio() {
     }
-
-    public static ListaNavio getInstance() {
-        if (instancia == null) {
+    /*
+    Garante que exista apenas uma única instância da lista de navios em toda a 
+    aplicação. Qualquer tela que precise acessar ou modificar a lista 
+    (cadastro, consulta, gerenciamento) o fará através dessa instância única, 
+    garantindo a consistência e a integridade dos dados pelo uso do singleton.
+    */
+    public static ListaNavio getInstance() 
+    {
+        if (instancia == null) 
+        {
             instancia = new ListaNavio();
         }
+        
         return instancia;
     }
     
