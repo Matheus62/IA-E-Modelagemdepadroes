@@ -132,7 +132,7 @@ public class NavioGerencia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+        /*usa o abstract factory para mudar os status do navio, um atributo não concreto*/
         List<Navio> navios = frota.getListaNavios();
         Navio navio = navios.get(this.i);
         

@@ -1,5 +1,5 @@
 package main;
-
+/*usa o builder para criar diferentes tipos de navio*/
 public class NavioFF implements NavioF {
 
     private String nome;
@@ -15,10 +15,11 @@ public class NavioFF implements NavioF {
     }
 
     @Override
+    /*Usa o factory para implementar na classe da lista*/
     public Navio inserirNavio() {
         return new NavioFP(nome, modelo, cor, valorOperacao);
     }
-
+/*utiliza o builder para criar o objeto*/
     public static class Builder {
 
         private String nome;

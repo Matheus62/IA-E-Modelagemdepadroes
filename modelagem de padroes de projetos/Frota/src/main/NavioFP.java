@@ -1,5 +1,7 @@
 package main;
-
+/*usa o prototype para clona o produto para colocar na lista, clopnando os 
+*metodos utilizados no navio.java
+*/
 public class NavioFP implements Navio, Cloneable {
 
     private static Long count = (long) 0;
@@ -79,7 +81,7 @@ public class NavioFP implements Navio, Cloneable {
     public String getTipo() {
         return "Navio Furtivo";
     }
-
+    
     @Override
     public String getStatus() {
         return status;
@@ -89,6 +91,6 @@ public class NavioFP implements Navio, Cloneable {
     public void setStatus(String status) {
         this.status = status;
     }
-    
+   
     
 }

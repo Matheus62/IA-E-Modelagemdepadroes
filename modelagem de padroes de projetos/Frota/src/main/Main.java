@@ -35,7 +35,7 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Frota de metodos do Matheus"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Sistema de Cadastro de Navio da Marinha Americana"));
 
         jButton3.setText("Sair");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +84,7 @@ public class Main extends javax.swing.JFrame {
                         .addGap(129, 129, 129)
                         .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
+                        .addGap(109, 109, 109)
                         .addComponent(jLabel2)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );

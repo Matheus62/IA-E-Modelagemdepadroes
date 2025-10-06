@@ -1,5 +1,5 @@
 package main;
-
+/*Usa o singleton para criar apenas uma instancia de lista no projeto*/
 import java.util.ArrayList;
 import java.util.List;
 
