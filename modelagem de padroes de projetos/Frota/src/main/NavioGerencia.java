@@ -60,7 +60,7 @@ public class NavioGerencia extends javax.swing.JFrame {
         PainelP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblNome.setText("Placa:");
+        lblNome.setText("Status:");
 
         buttonGroup1.add(Disponivel);
         Disponivel.setText("Disponivel");
