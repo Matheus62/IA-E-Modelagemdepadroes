@@ -60,7 +60,7 @@ public class NavioGerencia extends javax.swing.JFrame {
         PainelP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblNome.setText("Placa:");
+        lblNome.setText("Status:");
 
         buttonGroup1.add(Disponivel);
         Disponivel.setText("Disponivel");
@@ -132,7 +132,7 @@ public class NavioGerencia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+        /*usa o abstract factory para mudar os status do navio, um atributo não concreto*/
         List<Navio> navios = frota.getListaNavios();
         Navio navio = navios.get(this.i);
         

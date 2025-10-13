@@ -12,7 +12,7 @@ package main;
     
 */
 public interface Navio {
-    
+    /*começo do uso do prototype para criar um padrão para os produtos*/
     void alugar();
     
     String getTipo();
@@ -30,6 +30,6 @@ public interface Navio {
     String getStatus();
     
     void setStatus(String status);
-    
+   
     Object clone() throws CloneNotSupportedException;
 }

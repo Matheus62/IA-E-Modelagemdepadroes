@@ -232,7 +232,7 @@ public class NavioCadastro extends javax.swing.JFrame {
         }
         if (Furtivo.isSelected())
         {
-            factory = new NavioSF.Builder(txtNome.getText())
+            factory = new NavioFF.Builder(txtNome.getText())
             .cor(txtCor.getText())
             .marca(txtModelo.getText())
             .valorAluguel((Double) Double.parseDouble(txtValOperac.getText()))
@@ -258,7 +258,7 @@ public class NavioCadastro extends javax.swing.JFrame {
         }
         else if (Simples.isSelected())
         {
-            factory = new NavioFF.Builder(txtNome.getText())
+            factory = new NavioSF.Builder(txtNome.getText())
             .cor(txtCor.getText())
             .marca(txtModelo.getText())
             .valorAluguel((Double) Double.parseDouble(txtValOperac.getText()))

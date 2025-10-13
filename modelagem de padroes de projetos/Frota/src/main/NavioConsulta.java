@@ -84,7 +84,7 @@ public class NavioConsulta extends javax.swing.JFrame {
             }
         });
 
-        btnGerenciar.setText("Mudar tipo");
+        btnGerenciar.setText("Mudar status");
         btnGerenciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGerenciarActionPerformed(evt);
